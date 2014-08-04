@@ -1,0 +1,397 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	
+	<script type="text/javascript" src="d3/d3.v3.js"></script>
+	<script type="text/javascript" src="jquery-1.11.0.min.js"></script>
+	<script  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=false">
+</script>
+	
+	<link rel="stylesheet" href = "hospital_n1.css">
+
+<script type="text/javascript">
+<!--
+var image1=new Image()
+image1.src="fight-cancer-1.jpg"
+var image2=new Image()
+image2.src="fight-cancer-2.jpg"
+var image3=new Image()
+image3.src="fight-cancer-3.jpg"
+var image4=new Image()
+image4.src="fight-cancer-4.jpg"
+var image5=new Image()
+image5.src="fight-cancer-5.jpg"
+//-->
+var vcty,i, vcounty,len,vzip,vhos,vmdc,exec,abcd1=[],tyu1=[],lon1=[],lat1=[],coord1=[];
+var jsonhos, jsonser;
+
+
+</script>
+
+</head>
+
+<body id="body" class="body" onload="
+document.getElementById('age').value='',
+document.getElementById('gen').value='',
+document.getElementById('inc').value='',
+document.getElementById('zip1').value='',
+document.getElementById('mdc').value='gastrointestinal',
+document.getElementById('ser').value='',
+document.getElementById('hos').value='',
+document.getElementById('loc').value='',
+document.getElementById('saddr').value='',
+document.getElementById('city').value='',
+document.getElementById('county1').value='',
+document.getElementById('city1').value='',
+document.getElementById('county').value='',
+document.getElementById('hosname').value=''">
+
+<div id =  "maindiv">
+
+	
+	
+	<nav id="navbar">
+		<ul>
+			<a href="index.htm"><li style="text-align:center;left:20px"><pre style="text-align:center; ">Home</pre></li></a>
+			
+			<a href="tab2.html"><li style="text-align:center"><pre style="text-align:center">Language</pre></li></a>
+			<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center">Location</pre></li></a>
+			<li style="background-color:#f4f5f5; color:#000000; text-align:center;"><pre style="text-align:center">        Hospital          </pre></li>
+			<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center">About Us</pre></li></a>
+			<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center">FAQs</pre></li></a>
+			<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center">Glossary</pre></li></a>
+			<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center">Contact</pre></li></a>
+	
+		</ul>
+	</nav>
+	
+	<div id="mainsection">
+	<div id="buttonbar">
+	<ul><a href="tab2.html"><li style="text-align:center"><pre style="text-align:center;background-color: #66CCFF; ">Compare Providers</pre></li></a>
+			<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center; background-color:#f4f5f5">Compare Hospital</pre></li></a>
+	<a href="tab2.html"><li style="text-align:center"><pre style="text-align:center; background-color: #66CCFF; ">Compare Nurisng Homes</pre></li></a>
+		<a href="tab3.html"><li style="text-align:center"><pre style="text-align:center;background-color: #66CCFF; ">Locate Hospital</pre></li></a>
+	<a href="tab2.html"><li style="text-align:center"><pre style="text-align:center;background-color: #66CCFF; ">Query Locator</pre></li></a>
+	</ul></div>
+			
+	<div id="b1">
+	<img src="fight-cancer-1.jpg" name="slide" width="470" height="550" />
+<script>
+
+<!--
+//variable that will increment through the images
+var step=1
+function slideit(){
+//if browser does not support the image object, exit.
+if (!document.images)
+return
+document.images.slide.src=eval("image"+step+".src")
+if (step<3)
+step++
+else
+step=1
+//call function "slideit()" every 2.5 seconds
+setTimeout("slideit()",2500)
+}
+slideit()
+//-->
+</script>
+	</div>
+	<div id="b2">
+	Search
+	<ul><li><input type="text" id="county" placeholder="Enter County" value="" ></input></li>
+	<li><input type="text" id="city" placeholder="Enter city" value="" ></input></li>
+	<li><input type="text" id="hosname" placeholder="Enter Hospital Name" value="" ></input></li>
+	<li><pre style="text-align:center"><form name="input" >
+<input type="button" id="button1" onclick="myExec1()" style="left:150px;"value="Submit">
+</form> </li>
+	</ul>
+	
+	
+
+	</div>
+
+	<div id="b3">
+	 <br/><br/>Advanced Search
+	<ul><li>Choose Service</br><p class="filter" ></p>
+	<select>
+  <option value="volvo">Ortho</option>
+  <option value="saab">Cardio</option>
+  <option value="mercedes">Ent</option>
+  <option value="audi">Neuro</option>
+</select></li>
+	
+	
+	<li>MDC</br><p class="filter" id="mdc" value="Gastrointestinal"></p>
+	<select>
+  <option value="Gastrointestinal" onclick="document.getElementById('mdc').value='gastrointestinal'">Gastrointestinal</option>
+  <option value="Eye" onclick="document.getElementById('mdc').value='eye'">Eye</option>
+  <option value="Nervous_System" onclick="document.getElementById('mdc').value='nervous_System'">Nervous_System</option>
+  <option value="Musculoskeletal" onclick="document.getElementById('mdc').value='musculoskeletal'">Musculoskeletal</option>
+  <option value="Skin" onclick="document.getElementById('mdc').value='skin'">Skin</option>
+  <option value="Genitourinary" onclick="document.getElementById('mdc').value='genitourinary'">Genitourinary</option>
+<option value="Cardiovascular" onclick="document.getElementById('mdc').value='cardiovascular'">Cardiovascular</option>
+</select></li>
+</ul><br/><br/><br/>
+<ul><li><input type="text" id="county1" placeholder="Enter County" value="" ></input></li>
+	<li><input type="text" id="city1" placeholder="Enter city" value="" ></input></li>
+	<li><input type="text" id="zip1" placeholder="Enter Zip Code" value="" ></input></li>
+	</ul></div>
+	<div id="b4">
+	<br/><br/>Let Us Help You
+	<div id="b4a">
+	
+	<ul><li>Location</br><p class="filter" ></p>
+	<input type="text" placeholder="Enter Location" id="loc" value="" ></input></li>
+	<li>Gender</br><p class="filter" ></p>
+	<input type="text" id="gen"  value=""></input></li>
+	<li>Age</br><p class="filter" ></p>
+	<input type="text"id="age" value="" ></input></li>
+	<li>Income</br><p class="filter" ></p>
+	<input type="text" id="inc"  value=""></input></li>
+
+<li><pre style="text-align:center"><form name="input" >
+<input type="button" style="left:150px;"  onclick="myExec3(), document.getElementById('b6').style.display='block'"  value="Submit">
+</form> </li>
+
+	</ul>
+	</div>
+	<div id="b4b">
+	<ul><li>Cost</br><p class="filter" id="cost"></p>
+	<input type="range"  min="0" max="100" /></li>
+	<li>Proximity</br><p class="filter" id="pro"></p>
+	<input type="range"  min="0" max="100" /></li>
+	<li>Quality</br><p class="filter" id="qua"></p>
+	<input type="range"  min="0" max="100" /></li>
+<li>Urgency</br><p class="filter" id="urg"></p>
+	<input type="range"  min="0" max="100" /></li>
+	</ul>
+	</div>
+	</div>
+	<p id="demo"></p>
+	<div id="b6" class="hidden" >
+	
+	<div id="b7" >
+	<table><tr><td id="hospitalname1"></td></tr><tr><td id="cost1"></td></tr><tr><td id="overallscore1"></td></tr></table>
+	<form id="location"  action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr"></label>
+   <input type="text" class="hidden"id="saddr" name="saddr"  onclick="myFunction1()" value="" />
+  <input type="hidden" class="hidden" id="daddr1" name="daddr"  />
+  <input type="submit" value="Get directions" />
+</form>
+</div>
+	
+	<div id="b8" class="hidden">
+	<table><tr><td id="hospitalname2"></td></tr><tr><td id="cost2"></td></tr><tr><td id="overallscore2"></td></tr></table>
+	<form id="location"  action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr"></label>
+   <input type="text" class="hidden"id="saddr" name="saddr"  onclick="myFunction2()" value="" />
+  <input type="hidden" class="hidden" id="daddr2" name="daddr"  />
+   <input type="submit"  value="Get directions" />
+</form>
+</div>
+	
+	<div id="b9" class="hidden">
+	<table><tr><td id="hospitalname3"></td></tr><tr><td id="cost3"></td></tr><tr><td id="overallscore3"></td></tr></table>
+	<form id="location"  action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr"></label>
+   <input type="text" class="hidden"id="saddr" name="saddr"  onclick="myFunction3()" value="" />
+  <input type="hidden" class="hidden" id="daddr3" name="daddr"  />
+<input type="submit"  value="Get directions" />
+</form>
+</div>
+	
+	<div id="b10" class="hidden">
+	<table><tr><td id="hospitalname4"></td></tr><tr><td id="cost4"></td></tr><tr><td id="overallscore4"></td></tr></table>
+<form id="location"  action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr"></label>
+   <input type="text" class="hidden"id="saddr" name="saddr"  onclick="myFunction4()" value="" />
+  <input type="hidden" class="hidden" id="daddr4" name="daddr"  />
+  <input type="submit"  value="Get directions" />
+</form></div>
+	
+	<div id="b11" class="hidden">
+	<table><tr><td id="hospitalname5"></td></tr><tr><td id="cost5"></td></tr><tr><td id="overallscore5"></td></tr></table>
+	<form id="location"  action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr"></label>
+   <input type="text" class="hidden"id="saddr1" name="saddr1"  onclick="myFunction5()" value="" />
+  <input type="hidden" class="hidden" id="daddr5" name="daddr"  />
+ <input type="submit" value="Get directions" />
+</form></div>
+	<!--<ul><li><form id="location"  action="http://maps.google.com/maps" method="get" target="_blank">
+   <label for="saddr"></label>
+   <input type="text" class="hidden"id="saddr" name="saddr"  onclick="myFunction()" value="" /></li>
+  <input type="hidden" class="hidden" id="daddr" name="daddr"  />
+  <li> <input type="submit"  value="Get directions" />
+</form></li></ul>-->
+<script type="text/javascript">
+var coord;
+
+var tyu;
+	navigator.geolocation.getCurrentPosition(function(position1) {
+        
+            var geolocate = new google.maps.LatLng(position1.coords.latitude, position1.coords.longitude); 
+			document.getElementById('saddr').value = geolocate;
+			})
+			
+			
+			 
+		
+	function myFunction1() {
+			document.getElementById('daddr1').value = coord1[0];
+			document.querySelector('#hospitalname1').innerHTML = abcd1[0];
+			document.querySelector('#cost1').innerHTML = tyu1[0];
+			document.getElementById('overallscore1').value = '2192';
+			 len=len-1;
+			if(len>0)
+			{document.getElementById('b8').style.display='block';
+			myFunction2();
+			}
+	}
+	function myFunction2() {
+
+			
+			document.getElementById('daddr2').value = coord1[1];
+			document.querySelector('#hospitalname2').innerHTML = abcd1[1];
+			document.querySelector('#cost2').innerHTML = tyu1[1];
+			document.getElementById('overallscore2').value = '2192';
+			len=len-1;
+			if(len>0)
+			{document.getElementById('b9').style.display='block';
+			myFunction3();
+			}
+	
+	}
+	function myFunction3() {
+
+			document.getElementById('daddr3').value = coord1[2];
+			document.querySelector('#hospitalname3').innerHTML = abcd1[2];
+			document.querySelector('#cost3').innerHTML = tyu1[2];
+			document.getElementById('overallscore3').value = '2192';
+			len=len-1;
+			if(len>0)
+			{document.getElementById('b10').style.display='block';
+			myFunction4();
+			}
+	
+	}
+	function myFunction4() {
+
+			document.getElementById('daddr4').value = coord1[3];
+			document.querySelector('#hospitalname4').innerHTML = abcd1[3];
+			document.querySelector('#cost4').innerHTML = tyu1[3];
+			document.getElementById('overallscore4').value = '2192';
+			len=len-1;
+			{if(len>0)
+			document.getElementById('b11').style.display='block';
+			myFunction5();
+			}
+	
+	}
+	function myFunction5() {
+
+			document.getElementById('daddr5').value = coord1[4];
+			document.querySelector('#hospitalname5').innerHTML = abcd1[4];
+			document.querySelector('#cost5').innerHTML = tyu1[4];
+			document.getElementById('overallscore5').value = '2192';
+	
+}
+</script>
+<script>
+
+function myExec1()
+{exec=1;
+findhos();
+}
+function myExec3()
+{exec=3;
+findhos();
+}
+
+
+function findhos(){
+
+if(exec=='3')
+{vcty = document.getElementById('city1').value;
+vcounty=document.getElementById('county1').value;
+vmdc=document.getElementById('mdc').value;
+vzip=document.getElementById('zip1').value;
+
+$.getJSON("http://opendata.socrata.com/resource/ssfz-7rpv.json?$q="+vcty+"&$where=county_name='"+vcounty+"'AND zip_code='"+vzip+"' and "+vmdc+" > 0  &$select=hospital_name,phone_number,latitude,longitude,total_performance_score,address", function(data){
+
+jsonser=data;
+console.log("i am in");
+console.log(jsonser);
+
+for(i=0;i<jsonser.length;i++)
+{
+abcd1[i]=jsonser[i].hospital_name;
+tyu1[i]=jsonser[i].phone_number;
+lat1[i]=jsonser[i].latitude;
+lon1[i]=jsonser[i].longitude;
+coord1[i]=lat1[i]+","+lon1[i];
+}
+});
+	
+
+console.log(jsonser);
+
+
+if(jsonser[0]==undefined)
+{alert("Either no data present or we are searching for your data");
+document.getElementById('b6').style.display='none';
+}
+else {document.getElementById('b6').style.display='block';
+if(jsonser.length>5)
+len='5'
+else len=jsonser.length;
+myFunction1();
+
+};
+
+}
+
+if(exec=='1')
+{
+vcty = document.getElementById('city').value;
+vcounty=document.getElementById('county').value;
+vhos=document.getElementById('hosname').value;
+$.getJSON("http://opendata.socrata.com/resource/ssfz-7rpv.json?$q="+vhos+"&$where=county_name='"+vcounty+"' AND city='"+vcty+"'&$select=hospital_name,phone_number,latitude,longitude,total_performance_score,address", function(data){ 
+
+jsonhos=data;
+for(i=0;i<jsonhos.length;i++)
+{
+abcd1[i]=jsonhos[i].hospital_name;
+tyu1[i]=jsonhos[i].phone_number;
+lat1[i]=jsonhos[i].latitude;
+lon1[i]=jsonhos[i].longitude;
+coord1[i]=lat1[i]+","+lon1[i];
+}
+console.log(jsonhos);
+});
+
+
+if(jsonhos[0]==undefined)
+{document.getElementById("demo").innerHTML ="Either no data present or we are searching for your data";
+document.getElementById('b6').style.display='none';
+}
+else {document.getElementById('b6').style.display='block';
+myFunction1();
+if(jsonhos.length>5)
+len='5'
+else len=jsonhos.length;
+};
+
+}
+
+}
+
+</script>
+</div>
+	</div>
+
+<!--<div id="mu-sigma" style="position:fixed; bottom:10px; right:10px"><img src="ms.png" height="100"></div>-->
+</body>
+</html>	
