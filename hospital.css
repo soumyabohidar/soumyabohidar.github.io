@@ -1,0 +1,323 @@
+*			{
+				margin: 0px; 
+				padding: 0px;
+				font-family: 'NIKE Title', 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial;
+				color: #000000;
+				
+			}
+h1, h2 {width: 100%; float: left;}
+	h1 {margin-top: 100px; color: #555; margin-bottom: 5px;}
+	h2 {color: #999; font-weight: 100; margin-top: 0; margin-bottom: 10px;}
+	.pointer {color: #9b59b6; font-family: 'Pacifico', cursive; font-size: 30px; margin-top: 15px;}
+	pre {margin: 80px auto;}
+	pre code {padding: 350px; border-radius: 5px; font-size: 15px; background: rgba(0,0,0,0.1); border: rgba(0,0,0,0.05) 5px solid; max-width: 500px;}
+	.main {float: left; width: 100%; margin: 0 auto;}
+	.main h1 {padding:1500px 5000px; float: left; width: 100%; font-size: 45px; box-sizing: border-box; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; font-weight: 100; color: white; margin: 0;}
+	.main h1.demo1 {background: #1ABC9C;}
+	.circliful {position: relative; font-family:'Open Sans', sans-serif; font-weight:300;}
+	.circle-text, .circle-info, .circle-text-half, .circle-info-half {width: 100%; position: absolute; text-align: center; display: inline-block;font-family:'Open Sans', sans-serif; font-weight:300;}
+	.circle-info, .circle-info-half {color: #999;font-family:'Open Sans', sans-serif; font-weight:300;}
+	.circliful .fa {margin: -10px 3px 0 3px;font-family:'Open Sans', sans-serif; font-weight:300; 	position: relative; bottom: 4px;}
+	
+		#tag1{position:absolute;
+left:400px}
+	#tag2{position: absolute;right:400px;}
+
+header, footer, aside, section, nav, article, hgroup {display:block;}
+
+body		{	
+				text-align:center;
+			
+			}
+		
+#maindiv	{	
+				
+				width:100%;
+				
+			}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    text-decoration: underline;
+}
+			
+li	{
+	height:100%
+}
+			
+#b1 {
+position:absolute;
+top:100px;
+left:100px;
+background:none;
+width:200px;
+height:100%;
+}
+			
+#b1a {
+position:absolute;
+top:50px;
+left:0px;
+background:none;
+width:200px;
+}
+			
+#b1b {
+position:absolute;
+top:0px;
+left:0px;
+background:none;
+width:200px;
+}
+			#b2 {
+font: bold 18px 'NIKE Title';
+position:absolute;
+top:150px;
+left:100px;
+ display: inline-block;
+background:none;
+height:40px;
+}	
+#b2 ul {
+  font: bold 14px 'NIKE Title';
+  text-align: left;
+  width:100%;
+  display: inline-block;
+  margin: 0;
+background:none;
+  list-style: none;
+ 
+}
+#b2 ul li {
+ font: font: bold 14px 'NIKE Title';
+ 
+ 
+  margin-right: -4px;
+  position: relative;
+  padding: 2px;
+ 
+  cursor: pointer;
+   display: inline-block;
+}
+#b3 {
+font: bold 18px 'NIKE Title';
+position:absolute;
+top:200px;
+left:100px;
+
+}	
+#b3 ul {
+  font: bold 14px 'NIKE Title';
+  text-align: left;
+  width:100%;
+ display: inline-block;
+  margin: 0;
+
+  list-style: none;
+
+}
+#b3 ul li {
+  font: bold 14px 'NIKE Title';
+  display: inline-block;
+ position: relative;
+padding: 2px 10px 2px;
+cursor: pointer;
+  
+}
+#b6 {
+position:absolute;
+top:100px;
+left:1000px;
+Width:300px;
+}	
+#b7a
+{
+position:relative;
+top:10px;
+left:10px;
+width:70%;
+height:100px;
+}
+#b7b
+{
+position:relative;
+top:10px;
+left:400px;
+width:30%;
+height:100px;
+}
+	
+	#b8a
+{
+position:relative;
+top:120px;
+left:10px;
+width:70%;
+height:100px;
+}
+#b8b
+{
+position:relative;
+top:120px;
+left:400px;
+width:30%;
+height:100px;
+}
+#b9a
+{
+position:relative;
+top:240px;
+left:10px;
+width:70%;
+height:100px;
+}
+#b9b
+{
+position:relative;
+top:10px;
+left:400px;
+width:30%;
+height:100px;
+}
+table 	{opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+				
+				width: 240px;
+				margin: 2px;
+				margin-left: 6px;
+				margin-right: 6px;
+				margin-top: 2px;
+				font: 12px bold 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, 'NIKE Title';			
+			}
+tr, td		{
+				opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+				
+				width: 70px;
+				/*background-color:#101010*/;
+				font: 12px 'Lucida Grande', 'Helvetica Neue', Helvetica, Arial, 'NIKE Title';			
+			}
+td		{
+				
+				height: 20px;
+			}
+			
+th			{			
+				padding: 5px;
+				/*border: 1px solid black;*/
+			}
+#b6 ul {
+  font: bold 18px 'NIKE Title';
+  text-align: left;
+  width:100%;
+  display: inline;
+  margin: 0;
+
+  list-style: none;
+}
+#b6 ul li {
+  font: bold 14px 'NIKE Title';
+
+  margin-right: -4px;
+  position: relative;
+  
+  cursor: pointer;
+
+ 
+}
+	#b4a{
+	text-align: left;
+	font: bold 18px 'NIKE Title';
+	position:absolute;
+top:20px;
+left:50px;
+
+background:none;
+height:40px;
+}	
+#b4a ul {
+ font: bold 14px 'NIKE Title';
+ text-align: left;
+  width:100%;
+  display: inline;
+  margin: 0;
+
+  list-style: none;
+background:none; 
+}
+#b4a ul li {
+ font: bold 14px 'NIKE Title';
+text-align: left;
+ 
+  margin-right: -4px;
+  position: relative;
+  
+  cursor: pointer;
+
+}
+
+
+
+#b4{
+position:absolute;
+top:330px;
+left: 100px;
+
+background:none;
+}
+
+	#b4b {
+font: bold 18px 'NIKE Title';
+position:absolute;
+top:20px;
+    width:200px;
+left:300px;
+background:none;
+
+
+}	
+#b4b ul {
+  font: bold 14px 'NIKE Title';
+  text-align: left;
+  width:100%;
+  display: inline;
+  margin: 0;
+
+  list-style: none;
+
+ 
+}
+#b4b ul li {
+  font: bold 14px 'NIKE Title';
+  margin-right: -4px;
+  position: relative;
+ cursor: pointer;
+}
+#mainsection{	
+				/*float:right;*/
+				width:90%;
+			}
+#b7
+{
+position:absolute;
+left:1000px;
+top:100px;
+}
+
+
+.hidden {
+        display: none;
+      }
+
+
